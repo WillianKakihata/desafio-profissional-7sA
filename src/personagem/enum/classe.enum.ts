@@ -1,5 +1,5 @@
 export enum ClasseEnum {
-    GUERREIRO = 'GUERREIRO',
+    GUERREIRO ='GUERREIRO',
     MAGO = 'MAGO',
     ARQUEIRO = 'ARQUEIRO',
     LADINO = 'LADINO',

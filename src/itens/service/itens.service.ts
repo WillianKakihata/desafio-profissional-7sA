@@ -15,5 +15,23 @@ export class ItensService {
         return await this.itensRepository.create(itens)
     }
 
+    public async findAll() {
+        return await this.itensRepository.find()
+    }
+
+    public async findOne(id: string) {
+        return await this.itensRepository.findById(id)
+
+    }
+
+    public async update(id: string, itensRepository: CreateItensDto) {
+        return await this.itensRepository.findByIdAndUpdate(id, itensRepository)
+
+    }
+
+    public async delete(id: string) {
+        return await this.itensRepository.deleteOne({ _id: id });
+    }
+
 
 }
