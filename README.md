@@ -44,6 +44,7 @@ class CreateItensDto {
 - Amuletos são limitados a **1 por personagem**
 
 ## Rotas Personagem
+|--------|-----------------------------------------|-------------------------------------|
 | POST   | `/personagem/create`                    | Criar novo personagem               |
 | GET    | `/personagem/find`                      | Listar todos personagens            |
 | GET    | `/personagem/find/:id`                  | Buscar personagem por ID            |
@@ -55,6 +56,7 @@ class CreateItensDto {
 | GET    | `/personagem/find-amuleto/:id`          | Verificar se possui amuleto         |
 
 ## Rotas Itens
+|--------|-----------------------------------|-------------------------------|
 | POST   | `/itens/create`                   | Criar novo item               |
 | GET    | `/itens/find`                     | Listar todos os itens         |
 | GET    | `/itens/find/:id`                 | Buscar item por ID            |
