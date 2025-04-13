@@ -40,6 +40,16 @@ export class ItensController {
 
     }
 
+    @Get('find-name/:name')
+    public async findName(@Param('name') name: string) {
+        try {
+            return await this.itensService.findNameItens(name);
+        } catch (error) {
+            throw new HttpException({ "message": "Erro ao procurar um item" }, HttpStatus.BAD_REQUEST)
+        }
+
+    }
+
 
     @Delete('delete/:id')
     public async delete(@Param('id') id: string) {

@@ -12,7 +12,9 @@ export class PersonagemController {
     @Post('create')
     public async create(@Body() personagem: CreatePersonagemDto) {
         try {
-            return await this.personagemService.create(personagem);
+            const personagemCriacao = await this.personagemService.create(personagem);
+            const personagemAtributo = await this.personagemService.atributteItens(personagemCriacao._id.toString(), personagem.itensMagic)
+            return personagemAtributo;
         } catch (error) {
             throw new HttpException({ "message": "Erro ao criar um personagem" }, HttpStatus.BAD_REQUEST)
         }
