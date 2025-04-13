@@ -9,6 +9,10 @@ export class ValidateAtributtesDefenselRule implements ValidatorConstraintInterf
         const atribute_force = validationArguments.object['atribute_force'];
         if (points > 10) return false;
         if (points < 0) return false;
+
+        if(points == 10) {
+            if (atribute_force <= 0 && atribute_force >= 0) return true;
+        }
         if(points == 9) {
             if (atribute_force <= 1 && atribute_force >= 0) return true;
         }
