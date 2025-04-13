@@ -10,9 +10,7 @@ import { ItensService } from "src/itens/service/itens.service";
 export class ValidateItensMagic implements ValidatorConstraintInterface {
     constructor(private readonly itensService: ItensService) {}
     async validate(item: string[]): Promise<boolean>  {
-        
         for (const name of item) {
-            console.log(name);
             const itens = await this.itensService.findNameItens(name);
             if (!itens) return false;
         }

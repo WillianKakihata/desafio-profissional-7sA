@@ -9,7 +9,6 @@ export class ValidateItensAmuletePerson implements ValidatorConstraintInterface 
     async validate(item: string[]): Promise<boolean>  {
         let amuletes = 0;
         for (const name of item) {
-            console.log(name);
             const itens = await this.itensService.findNameItens(name);
             if (itens.tipoItem == 'AMULETO') {
                 amuletes += 1;
