@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Par
 import { PersonagemService } from "../service/personagem.service";
 import { CreatePersonagemDto } from "../dto/create-personagem.dto";
 import { UpdateNameDto } from "../dto/update-name.dto";
+import { InsertionItensCharacterDTO } from "../dto/insertion-itens.dto";
 
 
 @Controller('personagem')
@@ -16,7 +17,7 @@ export class PersonagemController {
             const personagemAtributo = await this.personagemService.atributteItens(personagemCriacao._id.toString(), personagem.itensMagic)
             return personagemAtributo;
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao criar um personagem" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({"message": "Erro ao criar um personagem", error: error.message}, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -26,7 +27,7 @@ export class PersonagemController {
         try {
             return await this.personagemService.findAll();
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao listar todos os personagem" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao listar todos os personagem", error: error.message}, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -37,7 +38,7 @@ export class PersonagemController {
         try {
             return await this.personagemService.findOne(id);
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao procurar um personagem" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao procurar um personagem", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -48,7 +49,7 @@ export class PersonagemController {
         try {
             return await this.personagemService.delete(id)
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao deletar um personagem" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao deletar um personagem", error: error.message }, HttpStatus.BAD_REQUEST)
         }
         
     }
@@ -60,9 +61,47 @@ export class PersonagemController {
             const updatename = await this.personagemService.updateName(id, name);
             return updatename;
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao atualizar um personagem" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao atualizar um personagem", error: error.message }, HttpStatus.BAD_REQUEST)
         }
         
+    }
+
+    @Post('insertion-itens/:id')
+    public async insertionItens(@Param('id') id: string, @Body() itens: InsertionItensCharacterDTO) {
+        try {
+            const insertion = await this.personagemService.addItensCharacter(id, itens);
+            return insertion;
+        } catch (error) {
+            throw new HttpException({ "message": "Erro ao colocar um item no personagem", error: error.message }, HttpStatus.BAD_REQUEST)
+        }
+    }
+
+    @Get('find-itens/:id')
+    public async findItensPerson(@Param('id') id: string ) {
+        try {
+            return await this.personagemService.findItensCharacter(id);
+        } catch (error) {
+            throw new HttpException({ "message": "Erro ao listar todos os itens do personagem", error: error.message }, HttpStatus.BAD_REQUEST)
+        }
+
+    }
+
+    @Put('delete-itens-character/:id')
+    public async deleteItensCharacter(@Param('id') id: string, @Body() nameItens: InsertionItensCharacterDTO){
+        try {
+            return await this.personagemService.removeItensCharacter(id, nameItens);
+        } catch (error) {
+            throw new HttpException({ "message": "Erro ao retirar os itens do personagem", error: error.message }, HttpStatus.BAD_REQUEST)
+        }
+    }
+
+    @Get('find-amuleto/:id')
+    public async findAmuleto(@Param('id') id: string) {
+        try {
+            return await this.personagemService.findAmuletePerson(id);
+        } catch (error) {
+            throw new HttpException({ "message": "Erro ao encontrar amuletos do personagem", error: error.message }, HttpStatus.BAD_REQUEST)
+        }
     }
 
 }

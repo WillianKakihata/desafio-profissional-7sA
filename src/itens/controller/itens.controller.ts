@@ -14,7 +14,7 @@ export class ItensController {
         try {
             return await this.itensService.create(itens);
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao criar todos os item" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao criar todos os item", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -24,7 +24,7 @@ export class ItensController {
         try {
             return await this.itensService.findAll();
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao listar todos os item" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao listar todos os item", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -35,7 +35,7 @@ export class ItensController {
         try {
             return await this.itensService.findOne(id);
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao procurar um item" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao procurar um item", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -45,7 +45,7 @@ export class ItensController {
         try {
             return await this.itensService.findNameItens(name);
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao procurar um item" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao procurar um item", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -56,7 +56,7 @@ export class ItensController {
         try {
             return await this.itensService.delete(id)
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao deletar um item" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao deletar um item", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }
@@ -68,7 +68,7 @@ export class ItensController {
             return await this.itensService.update(id, name);
 
         } catch (error) {
-            throw new HttpException({ "message": "Erro ao atualizar um item" }, HttpStatus.BAD_REQUEST)
+            throw new HttpException({ "message": "Erro ao atualizar um item", error: error.message }, HttpStatus.BAD_REQUEST)
         }
 
     }

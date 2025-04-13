@@ -10,6 +10,6 @@ import { ItensModule } from "src/itens/itens.module";
 @Module({
   imports: [MongooseModule.forFeature([{ name: Personagem.name, schema: PersonagemSchema }]), ItensModule],
   controllers: [PersonagemController],
-  providers: [PersonagemService, ValidateAtributtesDefenselRule, ValidateAtributtesForceRule],
+  providers: [PersonagemService, ValidateAtributtesDefenselRule, ValidateAtributtesForceRule, ],
 })
 export class PersonagemModule { }
