@@ -43,7 +43,8 @@ class CreateItensDto {
 - Armaduras só podem ter defesa, e **nenhuma força**
 - Amuletos são limitados a **1 por personagem**
 
-## Rotas Personagem
+## Rotas Disponíveis
+| Método | Rota                                    | Descrição                           |
 |--------|-----------------------------------------|-------------------------------------|
 | POST   | `/personagem/create`                    | Criar novo personagem               |
 | GET    | `/personagem/find`                      | Listar todos personagens            |
@@ -55,7 +56,9 @@ class CreateItensDto {
 | PUT    | `/personagem/delete-itens-character/:id`| Remover todos itens do personagem   |
 | GET    | `/personagem/find-amuleto/:id`          | Verificar se possui amuleto         |
 
-## Rotas Itens
+---
+
+| Método | Rota                              | Descrição                     |
 |--------|-----------------------------------|-------------------------------|
 | POST   | `/itens/create`                   | Criar novo item               |
 | GET    | `/itens/find`                     | Listar todos os itens         |
